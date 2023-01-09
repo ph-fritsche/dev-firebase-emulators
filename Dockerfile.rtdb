@@ -12,4 +12,6 @@ RUN firebase setup:emulators:ui \
 
 USER node
 
+WORKDIR /workspace
+
 ENTRYPOINT ["firebase", "emulators:start"]
