@@ -1,0 +1,15 @@
+FROM node:lts-alpine
+
+RUN apk update \
+ && apk add openjdk17-jre-headless
+
+RUN yarn global add firebase-tools \
+ && yarn cache clean
+
+RUN firebase setup:emulators:ui \
+ && firebase setup:emulators:database \
+ && firebase -V
+
+USER node
+
+ENTRYPOINT ["firebase", "emulators:start"]
