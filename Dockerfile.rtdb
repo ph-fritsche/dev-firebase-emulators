@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.4
 FROM node:lts-alpine
 
 RUN apk update \
@@ -13,5 +14,7 @@ RUN firebase setup:emulators:ui \
 USER node
 
 WORKDIR /workspace
+
+COPY --link workspace /workspace
 
 ENTRYPOINT ["/bin/sh", "-c", "while :; do firebase emulators:start; done"]
