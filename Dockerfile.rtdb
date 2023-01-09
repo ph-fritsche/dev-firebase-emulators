@@ -14,4 +14,4 @@ USER node
 
 WORKDIR /workspace
 
-ENTRYPOINT ["firebase", "emulators:start"]
+ENTRYPOINT ["/bin/sh", "-c", "while :; do firebase emulators:start; done"]
